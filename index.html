@@ -2,36 +2,215 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <link rel="stylesheet" href="style.css" />
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<link rel="stylesheet" href="style.css" />
 
-  <!-- Bootstrap CSS -->
-  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
-    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="style.css">
+	<!-- Bootstrap CSS -->
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+		integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="style.css">
 
-  <title>Trade Track</title>
+	<title>Trade Track</title>
 </head>
 
 <body>
 
+	<!-- NAV BAR -->
+	<!--NAV BAR-->
+	<nav class="navbar navbar-dark navbar-expand-lg bg-dark fixed-top">
+		<div class="container">
+
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
 
-    <!-- SCRIPT SOURCE -->
-    <script src="script.js"></script>
+			<!-- MENU -->
+			<div class="collapse navbar-collapse" id="menu">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="#home">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#chart">Chart</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#trade">Trade Journal</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#analysis">Market analysis</a>
+					</li>
 
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-  </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-  </script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-  </script>
+
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<!-- LANDING -->
+	<div class="landing">
+		<time id="time"></time>
+		<h1 id="landing-sub">
+			<span id="greeting"></span>
+			<span id="name" contenteditable="true"></span>
+		</h1>
+
+		<h2 id="landing-sub">What Is Your Profit Target For Today?</h2>
+		<h2 id="target" contenteditable="true"></h2>
+		<a class="btn btn-outline-light btn-lg" href="#trade">View Journal</a>
+	</div>
+
+	<!-- FIRST SECTION / CHART -->
+	<section>
+		<div class="container col-12 align-items-center">
+			<h1 id="chart" class="text-center mt-5 pb-0">Track Your Trades</h1>
+			<h4 class="text-center mt-0 mb-5">Trade Journal & Market Analysis</h4>
+		</div>
+
+		<div class="container h-25">
+			<!-- TradingView Widget BEGIN -->
+			<div class="tradingview-widget-container">
+				<div style="height: 600px;" id="tradingview_eb1e8"></div>
+				<div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/BITFINEX-BTCUSD/"
+						rel="noopener" target="_blank"><span class="blue-text">BTCUSD Chart</span></a> by TradingView
+				</div>
+				<script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+				<script type="text/javascript">
+					new TradingView.widget({
+            "autosize": true,
+            "symbol": "BITFINEX:BTCUSD",
+            "interval": "240",
+            "timezone": "Etc/UTC",
+            "theme": "Dark",
+            "style": "1",
+            "locale": "en",
+            "toolbar_bg": "#f1f3f6",
+            "enable_publishing": false,
+            "hide_side_toolbar": false,
+            "allow_symbol_change": true,
+            "show_popup_button": true,
+            "popup_width": "1000",
+            "popup_height": "650",
+            "container_id": "tradingview_eb1e8"
+          });
+				</script>
+			</div>
+			<!-- TradingView Widget END -->
+		</div>
+
+	</section>
+
+	<div class="container mt-5" id="trade">
+		<div class="row">
+			<div class="col-sm-12 col-lg-6">
+	
+	
+				<h2>PnL Tracker</h2>
+				<p>Enter trade Profit+/Loss- in the fields below to track your daily PnL</p>
+	
+	
+	
+	
+				<h3>Add new trade</h3>
+				<form id="form">
+					<div>
+						<label>Trade Pair (eg. BTC/USD)</label>
+						<input type="text" id="text">
+	          </div>
+	
+	
+						<div>
+							<label>Profit/-Loss (eg. -500)</label>
+							<input type="number" id="amount">
+	          </div>
+							<button class="btn">Add trade</button>
+				</form>
+				<h3>PnL History</h3>
+				<ul id="list" class="list">
+					<!-- <li class="minus">
+	              Cash <span>-$400</span><button class="delete-btn">x</button>
+	            </li> -->
+				</ul>
+				<div class="inc-exp-container vh-25">
+					<h3>Describe your strategy here</h3>
+					<p id="notes" contenteditable="true"></p>
+	
+				</div>
+	
+			</div>
+			<div class="col-sm-12 col-lg-6">
+				<h4>Your Daily Profit/Loss</h4>
+				<h1 id="balance">$0.00</h1>
+				<div class="row">
+					<div class="col-6">
+						<div>
+							<h4>Profit +</h4>
+							<p id="money-plus" class="money plus">+$0.00</p>
+						</div>
+					</div>
+					<div class="col-6">
+						<div class="text-right">
+							<h4>- Loss</h4>
+							<p id="money-minus" class="money minus">-$0.00</p>
+						</div>
+	
+					</div>
+				</div>
+	
+				<div class="inc-container">
+	
+					<h3 class="mt-0">
+						Trade Journal</h3>
+					<p class="medium">Summarise your trade ideas below</p>
+					<form id="book-form">
+						<div class="form-group">
+							<label for="pair">Trade Pair</label>
+							<input type="text" id="title" class="form-control">
+	                    </div>
+							<div class="form-group">
+								<label for="play">Play</label>
+								<input type="text" id="author" class="form-control">
+	                        </div>
+								<div class="form-group">
+									<label for="result">Result</label>
+									<input type="text" id="isbn" class="form-control">
+	            </div>
+									<input type="submit" value="Add Trade" class="btn btn-primary">
+	          </form>
+									<table class="table table-striped mt-5">
+										<thead>
+											<tr>
+												<th>Pair</th>
+												<th>Play</th>
+												<th>Win/Loss</th>
+												<th></th>
+											</tr>
+										</thead>
+										<tbody id="book-list"></tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+
+						<!-- SCRIPT SOURCE -->
+						<script src="script.js"></script>
+
+						<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+							integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+							crossorigin="anonymous">
+						</script>
+						<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+							integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+							crossorigin="anonymous">
+						</script>
+						<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+							integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+							crossorigin="anonymous">
+						</script>
 </body>
+
 </html>
