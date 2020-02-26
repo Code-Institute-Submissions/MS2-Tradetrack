@@ -83,3 +83,63 @@ p {
   padding: 20px;
   margin: 20px 0;
 }
+
+.money {
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  margin: 5px 0;
+  
+}
+
+.money.plus {
+  color: #2ecc71;
+}
+
+.money.minus {
+  color: #c0392b;
+}
+
+.table{
+  color: rgb(233, 233, 233);
+}
+
+input[type='text'],
+input[type='number'] {
+  border: 1px solid #dedede;
+  color: rgb(0, 0, 0);
+  display: block;
+  font-size: 1.125rem;
+  padding: 10px;
+  width: 100%;
+}
+
+ol li {
+  font-size: 1.125rem;
+  line-height: 40px;
+  font-weight: 400;
+  letter-spacing: 1;
+}
+.list {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 40px;
+}
+
+.list li {
+  background-color: rgb(255, 255, 255);
+  font-size: 18px;
+  color: rgb(0, 0, 0);
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.list li.plus {
+  border-right: 30px solid #2ecc71;
+}
+
+.list li.minus {
+  border-right: 30px solid #c0392b;
+}
