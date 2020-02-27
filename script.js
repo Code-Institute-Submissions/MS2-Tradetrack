@@ -1,3 +1,6 @@
+
+//ACKNOWLEDGEMENTS - This code was written and adapted with guidence from TravesyMedias tutorials from Youtube
+
 // DOM ELEMENTS FOR LANDING & NOTES
 const time = document.getElementById('time'),
   greeting = document.getElementById('greeting'),

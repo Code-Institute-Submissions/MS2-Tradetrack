@@ -106,13 +106,13 @@
 	</div>
 
 	<!-- FIRST SECTION / CHART -->
-	<section>
+	<section vh-100>
 		<div class="container col-12 align-items-center">
 			<h1 id="chart" class="text-center mt-5 pb-0">Track Your Trades</h1>
 			<h4 class="text-center mt-0 mb-5">Trade Journal & Market Analysis</h4>
 		</div>
 
-		<div class="container h-25">
+		<div class="container">
 			<!-- TradingView Widget BEGIN -->
 			<div class="tradingview-widget-container">
 				<div style="height: 600px;" id="tradingview_eb1e8"></div>
@@ -163,9 +163,10 @@
 						<label>Profit/-Loss (eg. -500)</label>
 						<input type="number" id="amount">
 	                </div>
-					<button class="btn">Add trade</button>
+					<button class="btn btn-outline-light btn-lg mt-3">Add trade</button>
 				</form>
 				<h3>PnL History</h3>
+
 				<ul id="list" class="list">
 					<!-- <li class="minus">
 	                Cash <span>-$400</span><button class="delete-btn">x</button>
@@ -218,7 +219,7 @@
                             <label for="result">Result</label>
                             <input type="text" id="result" class="form-control">
                         </div>
-                        <input type="submit" value="Add Trade" class="btn btn-primary">
+                        <input type="submit" value="Add Trade" class="btn btn-outline-light btn-lg">
                     </form>
                     <table class="table table-striped mt-5">
                         <thead>
@@ -460,7 +461,7 @@
 			    	behavior.</p>
 		    </div>
     		<!--Calender from tradingview-->
-            <div class="col-sm-12 col-lg-6 vh-25" style="height: 400px;">
+            <div class="col-sm-12 col-lg-6 height-25" style="height: 400px;">
 		    	<h3 class="mb-4">Economic Calender</h3>
 			    	<!-- TradingView Widget BEGIN -->
 				<div class="tradingview-widget-container">
@@ -475,7 +476,7 @@
                                 "colorTheme": "dark",
                                 "isTransparent": true,
                                 "width": "100%",
-                                "height": "100%",
+                                "height": "80%",
                                 "locale": "en",
                                 "importanceFilter": "-1,0,1"
                             }
@@ -493,7 +494,7 @@
 
     <!--FOOTER-->
   <footer>
-    <div class="container">
+    <div class="container-fluid w-100">
       <p class="p-5 lead text-center">Copyright &copy; Alexander Szolkowski 2020</p>
     </div>
   </footer>
