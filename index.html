@@ -51,6 +51,47 @@
 		</div>
 	</nav>
 
+    <!--Market Banner-->
+    <div id="market-banner" class="pt-5">
+        <!-- TradingView Widget BEGIN -->
+        <div id="home" class="tradingview-widget-container">
+            <div class="tradingview-widget-container__widget"></div>
+
+            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js"
+            async>
+            {
+          "symbols": [{
+              "proName": "OANDA:SPX500USD",
+              "title": "S&P 500"
+            },
+            {
+              "proName": "OANDA:NAS100USD",
+              "title": "Nasdaq 100"
+            },
+            {
+              "proName": "FX_IDC:EURUSD",
+              "title": "EUR/USD"
+            },
+            {
+              "proName": "BITSTAMP:BTCUSD",
+              "title": "BTC/USD"
+            },
+            {
+              "proName": "BITSTAMP:ETHUSD",
+              "title": "ETH/USD"
+            }
+          ],
+          "colorTheme": "dark",
+          "isTransparent": true,
+          "displayMode": "adaptive",
+          "locale": "en"
+        }
+        
+            </script>
+        </div>
+        <!-- TradingView Widget END -->
+  </div>
+
 	<!-- LANDING -->
 	<div class="landing">
 		<time id="time"></time>
