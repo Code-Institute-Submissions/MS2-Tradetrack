@@ -51,6 +51,47 @@
 		</div>
 	</nav>
 
+    <!--Market Banner-->
+    <div id="market-banner" class="pt-5">
+        <!-- TradingView Widget BEGIN -->
+        <div id="home" class="tradingview-widget-container">
+            <div class="tradingview-widget-container__widget"></div>
+
+            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js"
+            async>
+            {
+          "symbols": [{
+              "proName": "OANDA:SPX500USD",
+              "title": "S&P 500"
+            },
+            {
+              "proName": "OANDA:NAS100USD",
+              "title": "Nasdaq 100"
+            },
+            {
+              "proName": "FX_IDC:EURUSD",
+              "title": "EUR/USD"
+            },
+            {
+              "proName": "BITSTAMP:BTCUSD",
+              "title": "BTC/USD"
+            },
+            {
+              "proName": "BITSTAMP:ETHUSD",
+              "title": "ETH/USD"
+            }
+          ],
+          "colorTheme": "dark",
+          "isTransparent": true,
+          "displayMode": "adaptive",
+          "locale": "en"
+        }
+        
+            </script>
+        </div>
+        <!-- TradingView Widget END -->
+  </div>
+
 	<!-- LANDING -->
 	<div class="landing">
 		<time id="time"></time>
@@ -241,33 +282,213 @@
 
   <!-- Market Overview -->
     
-        <div class="container mt-5" style="height: 600px;">
-            <h1 class="text-center p-5">Market Overview</h1>
+    <div class="container mt-5" style="height: 600px;">
+        <h1 class="text-center p-5">Market Overview</h1>
             <!-- Trading view overview -->
-        
-        </div>
+        <div class="tradingview-widget-container">
+            <div class="tradingview-widget-container__widget pb-5"></div>
 
-    <!-- Forex Heat Map -->
-    <div class="container mt-5 pt-5" style="height: 600px;">
-        <h1 class="text-center p-5">Forex Heat Map</h1>
+            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js"
+            async>
+            {
+                "width": "100%",
+                "height": "90%",
+                "symbolsGroups": [{
+                    "name": "Indices",
+                    "originalName": "Indices",
+                    "symbols": [{
+                        "name": "OANDA:SPX500USD",
+                        "displayName": "S&P 500"
+                    },
+                    {
+                        "name": "OANDA:NAS100USD",
+                        "displayName": "Nasdaq 100"
+                    },
+                    {
+                        "name": "FOREXCOM:DJI",
+                        "displayName": "Dow 30"
+                    },
+                    {
+                        "name": "INDEX:NKY",
+                        "displayName": "Nikkei 225"
+                    },
+                    {
+                        "name": "INDEX:DEU30",
+                        "displayName": "DAX Index"
+                    },
+                    {
+                        "name": "OANDA:UK100GBP",
+                        "displayName": "FTSE 100"
+                    }
+                    ]
+                },
+                {
+                    "name": "Commodities",
+                    "originalName": "Commodities",
+                    "symbols": [{
+                        "name": "CME_MINI:ES1!",
+                        "displayName": "E-Mini S&P"
+                    },
+                    {
+                        "name": "CME:6E1!",
+                        "displayName": "Euro"
+                    },
+                    {
+                        "name": "COMEX:GC1!",
+                        "displayName": "Gold"
+                    },
+                    {
+                        "name": "NYMEX:CL1!",
+                        "displayName": "Crude Oil"
+                    },
+                    {
+                        "name": "NYMEX:NG1!",
+                        "displayName": "Natural Gas"
+                    },
+                    {
+                        "name": "CBOT:ZC1!",
+                        "displayName": "Corn"
+                    }
+                    ]
+                },
+                {
+                    "name": "Bonds",
+                    "originalName": "Bonds",
+                    "symbols": [{
+                        "name": "CME:GE1!",
+                        "displayName": "Eurodollar"
+                    },
+                    {
+                        "name": "CBOT:ZB1!",
+                        "displayName": "T-Bond"
+                    },
+                    {
+                        "name": "CBOT:UB1!",
+                        "displayName": "Ultra T-Bond"
+                    },
+                    {
+                        "name": "EUREX:FGBL1!",
+                        "displayName": "Euro Bund"
+                    },
+                    {
+                        "name": "EUREX:FBTP1!",
+                        "displayName": "Euro BTP"
+                    },
+                    {
+                        "name": "EUREX:FGBM1!",
+                        "displayName": "Euro BOBL"
+                    }
+                    ]
+                },
+                {
+                    "name": "Forex",
+                    "originalName": "Forex",
+                    "symbols": [{
+                        "name": "FX:EURUSD"
+                    },
+                    {
+                        "name": "FX:GBPUSD"
+                    },
+                    {
+                        "name": "FX:USDJPY"
+                    },
+                    {
+                        "name": "FX:USDCHF"
+                    },
+                    {
+                        "name": "FX:AUDUSD"
+                    },
+                    {
+                        "name": "FX:USDCAD"
+                    }
+                    ]
+                }
+                ],
+                "colorTheme": "dark",
+                "isTransparent": true,
+                "locale": "en"
+          }
+        </script>
+      </div>
+                
+            
+
+        
     </div>
 
+    <!-- Forex Heat Map -->
+	<div class="container mt-5 pt-5" style="height: 600px;">
+		<h1 class="text-center p-5">Forex Heat Map</h1>
+		<div class="tradingview-widget-container">
+			<div class="tradingview-widget-container__widget"></div>
+			<div class="tradingview-widget-copyright  mb-5"><a
+					href="https://www.tradingview.com/markets/currencies/forex-cross-rates/" rel="noopener"
+					target="_blank"><span class="blue-text">Forex Rates</span></a> by TradingView</div>
+			<script type="text/javascript"
+				src="https://s3.tradingview.com/external-embedding/embed-widget-forex-cross-rates.js" async>
+				{
+	            "width": "100%",
+	            "height": "80%",
+	            "currencies": [
+	              "EUR",
+	              "USD",
+	              "JPY",
+	              "GBP",
+	              "CHF",
+	              "AUD",
+	              "CAD",
+	              "NZD",
+	              "CNY"
+	            ],
+	            "isTransparent": true,
+	            "colorTheme": "dark",
+	            "locale": "en"
+	          }
+			</script>
+		</div>
+	</div>
 
-  <!-- Fundamentals SECTION/Economic Calender -->
+
+    <!-- Fundamentals SECTION/Economic Calender -->
     <div class="container">
-        <div class="row">
-            <div class="col-sm-12 col-lg-6">
-                <h3>Fundamental analysis</h3>
-                <p>Fundamental analysis attempts to measure a security's intrinsic value by examining related economic and
-                financial factors including the balance sheet, strategic initiatives, microeconomic indicators, and consumer
-                behavior.</p>
-                
-                <!--Calender from tradingview-->
+	    <div class="row">
+		    <div class="col-sm-12 col-lg-6">
+			    <h3>Fundamental analysis</h3>
+    			<p>Fundamental analysis attempts to measure a security's intrinsic value by examining related economic and
+	    			financial factors including the balance sheet, strategic initiatives, microeconomic indicators, and
+		    		consumer
+			    	behavior.</p>
+		    </div>
+    		<!--Calender from tradingview-->
+            <div class="col-sm-12 col-lg-6 vh-25" style="height: 400px;">
+		    	<h3 class="mb-4">Economic Calender</h3>
+			    	<!-- TradingView Widget BEGIN -->
+				<div class="tradingview-widget-container">
+				    <div class="tradingview-widget-container__widget">
+                    
+                    </div>
+					    
+					    
+                    <script type="text/javascript"
+						src="https://s3.tradingview.com/external-embedding/embed-widget-events.js" async>
+						    {
+                                "colorTheme": "dark",
+                                "isTransparent": true,
+                                "width": "100%",
+                                "height": "100%",
+                                "locale": "en",
+                                "importanceFilter": "-1,0,1"
+                            }
+			        </script>
+				    
+				    <!-- TradingView Widget END -->
+    			</div>	
+	    	    
 
 
 
-            </div>
-        </div>
+    		</div>
+    	</div>
     </div>
 
     <!--FOOTER-->
