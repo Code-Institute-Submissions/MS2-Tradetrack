@@ -135,3 +135,254 @@ getName();
 getTarget();
 getNotes();
 
+
+// Profit/loss History & Tracker 
+
+const balance = document.getElementById('balance');
+const money_plus = document.getElementById('money-plus');
+const money_minus = document.getElementById('money-minus');
+const list = document.getElementById('list');
+const form = document.getElementById('form');
+const text = document.getElementById('text');
+const amount = document.getElementById('amount');
+
+const localStorageTransactions = JSON.parse(
+  localStorage.getItem('transactions')
+);
+
+let transactions =
+  localStorage.getItem('transactions') !== null ? localStorageTransactions : [];
+
+// Add trade transaction
+function addTransaction(e) {
+  e.preventDefault();
+
+  if (text.value.trim() === '' || amount.value.trim() === '') {
+    alert('Please add a text and amount');
+  } else {
+    const transaction = {
+      id: generateID(),
+      text: text.value,
+      amount: +amount.value
+    };
+
+    transactions.push(transaction);
+
+    addTransactionDOM(transaction);
+
+    updateValues();
+
+    updateLocalStorage();
+
+    text.value = '';
+    amount.value = '';
+  }
+}
+
+// Generate random ID
+function generateID() {
+  return Math.floor(Math.random() * 100000000);
+}
+
+// Add  trade transactions to DOM list
+function addTransactionDOM(transaction) {
+  // Get sign
+  const sign = transaction.amount < 0 ? '-' : '+';
+
+  const item = document.createElement('li');
+
+  // Add class based on value
+  item.classList.add(transaction.amount < 0 ? 'minus' : 'plus');
+
+  item.innerHTML = `
+    ${transaction.text} <span>${sign}${Math.abs(
+    transaction.amount
+  )}</span> <button class="delete-btn" onclick="removeTransaction(${
+    transaction.id
+  })">x</button>
+  `;
+
+  list.appendChild(item);
+}
+
+// Update the balance, profit and loss
+function updateValues() {
+  const amounts = transactions.map(transaction => transaction.amount);
+
+  const total = amounts.reduce((acc, item) => (acc += item), 0).toFixed(2);
+
+  const income = amounts
+    .filter(item => item > 0)
+    .reduce((acc, item) => (acc += item), 0)
+    .toFixed(2);
+
+  const expense = (
+    amounts.filter(item => item < 0).reduce((acc, item) => (acc += item), 0) *
+    -1
+  ).toFixed(2);
+
+  balance.innerText = `$${total}`;
+  money_plus.innerText = `$${income}`;
+  money_minus.innerText = `$${expense}`;
+}
+
+// Remove transaction by ID
+function removeTransaction(id) {
+  transactions = transactions.filter(transaction => transaction.id !== id);
+
+  updateLocalStorage();
+
+  init();
+}
+
+// Update local storage trade transactions
+function updateLocalStorage() {
+  localStorage.setItem('transactions', JSON.stringify(transactions));
+}
+
+// Init app
+function init() {
+  list.innerHTML = '';
+
+  transactions.forEach(addTransactionDOM);
+  updateValues();
+}
+
+init();
+
+form.addEventListener('submit', addTransaction);
+
+// Trade Class: Represents a trade note in journal
+class Trade {
+  constructor(pair, play, result) {
+    this.pair = pair;
+    this.play = play;
+    this.result = result;
+  }
+}
+
+// UI Class: Handle UI Tasks
+class UI {
+  static displayTrades() {
+    const trades = Store.getTrades();
+
+    trades.forEach((trade) => UI.addTradeToList(trade));
+  }
+
+  static addTradeToList(trade) {
+    const list = document.querySelector('#trade-list');
+
+    const row = document.createElement('tr');
+
+    row.innerHTML = `
+      <td>${trade.pair}</td>
+      <td>${trade.play}</td>
+      <td>${trade.result}</td>
+      <td><a href="#" class="btn btn-danger btn-sm delete">X</a></td>
+    `;
+
+    list.appendChild(row);
+  }
+
+  static deleteTrade(el) {
+    if(el.classList.contains('delete')) {
+      el.parentElement.parentElement.remove();
+    }
+  }
+
+  static showAlert(message, className) {
+    const div = document.createElement('div');
+    div.className = `alert alert-${className}`;
+    div.appendChild(document.createTextNode(message));
+    const container = document.querySelector('.container');
+    const form = document.querySelector('#trade-form');
+    container.insertBefore(div, form);
+
+    // Vanish in 3 seconds
+    setTimeout(() => document.querySelector('.alert').remove(), 3000);
+  }
+
+  static clearFields() {
+    document.querySelector('#pair').value = '';
+    document.querySelector('#play').value = '';
+    document.querySelector('#result').value = '';
+  }
+}
+
+// Store Class: Handles Storage
+class Store {
+  static getTrades() {
+    let trades;
+    if(localStorage.getItem('trades') === null) {
+      trades = [];
+    } else {
+      trades = JSON.parse(localStorage.getItem('trades'));
+    }
+
+    return trades;
+  }
+
+  static addTrade(trade) {
+    const trades = Store.getTrades();
+    trades.push(trade);
+    localStorage.setItem('trades', JSON.stringify(trades));
+  }
+
+  static removeTrade(result) {
+    const trades = Store.getTrades();
+
+    trades.forEach((trade, index) => {
+      if(trade.result === result) {
+        trades.splice(index, 1);
+      }
+    });
+
+    localStorage.setItem('trades', JSON.stringify(trades));
+  }
+}
+
+// Event: Display Trades
+document.addEventListener('DOMContentLoaded', UI.displayTrades);
+
+// Event: Add a Trade
+document.querySelector('#trade-form').addEventListener('submit', (e) => {
+  // Prevent actual submit
+  e.preventDefault();
+
+  // Get form values
+  const pair = document.querySelector('#pair').value;
+  const play = document.querySelector('#play').value;
+  const result = document.querySelector('#result').value;
+
+  // Validate
+  if(pair === '' || play === '' || result === '') {
+    UI.showAlert('Please fill in all fields', 'danger');
+  } else {
+    // Instatiate trade
+    const trade = new Trade(pair, play, result);
+
+    // Add Trade to UI
+    UI.addTradeToList(trade);
+
+    // Add trade to store
+    Store.addTrade(trade);
+
+    // Show success message
+    UI.showAlert('Trade Added', 'success');
+
+    // Clear fields
+    UI.clearFields();
+  }
+});
+
+// Event: Remove a Trade
+document.querySelector('#trade-list').addEventListener('click', (e) => {
+  // Remove trade from UI
+  UI.deleteTrade(e.target);
+
+  // Remove trade from store
+  Store.removeTrade(e.target.parentElement.previousElementSibling.textContent);
+
+  // Show success message
+  UI.showAlert('Trade Removed', 'success');
+});

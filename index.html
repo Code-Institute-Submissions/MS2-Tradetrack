@@ -108,34 +108,31 @@
 		<div class="row">
 			<div class="col-sm-12 col-lg-6">
 	
-	
 				<h2>PnL Tracker</h2>
 				<p>Enter trade Profit+/Loss- in the fields below to track your daily PnL</p>
-	
-	
-	
 	
 				<h3>Add new trade</h3>
 				<form id="form">
 					<div>
 						<label>Trade Pair (eg. BTC/USD)</label>
 						<input type="text" id="text">
-	          </div>
-	
-	
-						<div>
-							<label>Profit/-Loss (eg. -500)</label>
-							<input type="number" id="amount">
-	          </div>
-							<button class="btn">Add trade</button>
+	                </div>
+
+					<div>
+						<label>Profit/-Loss (eg. -500)</label>
+						<input type="number" id="amount">
+	                </div>
+					<button class="btn">Add trade</button>
 				</form>
 				<h3>PnL History</h3>
 				<ul id="list" class="list">
 					<!-- <li class="minus">
-	              Cash <span>-$400</span><button class="delete-btn">x</button>
-	            </li> -->
+	                Cash <span>-$400</span><button class="delete-btn">x</button>
+	                </li> -->
 				</ul>
-				<div class="inc-exp-container vh-25">
+				
+                <!-- Write your strategy-->
+                <div class="inc-container vh-25">
 					<h3>Describe your strategy here</h3>
 					<p id="notes" contenteditable="true"></p>
 	
@@ -161,55 +158,54 @@
 					</div>
 				</div>
 	
-				<div class="inc-container">
-	
-					<h3 class="mt-0">
-						Trade Journal</h3>
-					<p class="medium">Summarise your trade ideas below</p>
-					<form id="book-form">
-						<div class="form-group">
-							<label for="pair">Trade Pair</label>
-							<input type="text" id="title" class="form-control">
-	                    </div>
-							<div class="form-group">
-								<label for="play">Play</label>
-								<input type="text" id="author" class="form-control">
-	                        </div>
-								<div class="form-group">
-									<label for="result">Result</label>
-									<input type="text" id="isbn" class="form-control">
-	            </div>
-									<input type="submit" value="Add Trade" class="btn btn-primary">
-	          </form>
-									<table class="table table-striped mt-5">
-										<thead>
-											<tr>
-												<th>Pair</th>
-												<th>Play</th>
-												<th>Win/Loss</th>
-												<th></th>
-											</tr>
-										</thead>
-										<tbody id="book-list"></tbody>
-									</table>
-								</div>
-							</div>
-						</div>
+				<div class="container">
+                    <div class="inc-container">
 
-						<!-- SCRIPT SOURCE -->
+                    <h3 class="mt-0">
+                    Trade Journal</h3>
+                    <p class="medium">Summarise your trade ideas below</p>
+                    <form id="trade-form">
+                        <div class="form-group">
+                            <label for="pair">Trade Pair</label>
+                            <input type="text" id="pair" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="play">Play</label>
+                            <input type="text" id="play" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="result">Result</label>
+                            <input type="text" id="result" class="form-control">
+                        </div>
+                        <input type="submit" value="Add Trade" class="btn btn-primary">
+                    </form>
+                    <table class="table table-striped mt-5">
+                        <thead>
+                            <tr>
+                                <th>Pair</th>
+                                <th>Play</th>
+                                <th>Describe result or plan for future trade</th>
+  
+                            </tr>
+                        </thead>
+                    <tbody id="trade-list"></tbody>
+                    </table>
+                </div>
+			</div>
+        </div>
+	</div>
+
+		<!-- SCRIPT SOURCE -->
 						<script src="script.js"></script>
-
+						
 						<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-							integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-							crossorigin="anonymous">
+							integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
 						</script>
 						<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-							integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-							crossorigin="anonymous">
+							integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
 						</script>
 						<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-							integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-							crossorigin="anonymous">
+							integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
 						</script>
 </body>
 
